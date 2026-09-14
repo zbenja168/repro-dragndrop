@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReproStudy &ndash; Drag &amp; Drop Games</title>
+<style>
+  :root{--bg:#0a0805;--surface:#14110b;--surface2:#1d1812;--text:#f1f5f9;--muted:#94a3b8;--border:rgba(255,255,255,0.07);}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;}
+
+  header{background:linear-gradient(160deg,#1a1305 0%,#2a1f08 50%,#0a0805 100%);border-bottom:1px solid var(--border);padding:44px 24px 36px;text-align:center;position:relative;overflow:hidden;}
+  header::after{content:'\1F52C';position:absolute;font-size:360px;opacity:.025;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+  header h1{font-size:2.4rem;font-weight:800;letter-spacing:-0.5px;background:linear-gradient(135deg,#f8fafc 30%,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px;position:relative;}
+  header p{color:var(--muted);font-size:.9rem;position:relative;}
+  .pills{display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap;position:relative;}
+  .pill{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:20px;padding:5px 14px;font-size:.78rem;color:var(--muted);}
+  .pill b{color:#ec4899;}
+
+  .search-wrap{max-width:460px;margin:22px auto 0;position:relative;}
+  .search-wrap input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:10px 44px 10px 18px;color:var(--text);font-size:.85rem;outline:none;transition:.2s;}
+  .search-wrap input:focus{border-color:#ec4899;box-shadow:0 0 0 3px rgba(236, 72, 153, .18);}
+  .search-wrap input::placeholder{color:var(--muted);}
+  .search-ico{position:absolute;right:15px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.85rem;pointer-events:none;}
+
+  main{max-width:1380px;margin:0 auto;padding:32px 16px 56px;}
+  .no-results{text-align:center;color:var(--muted);padding:60px 20px;font-size:.9rem;display:none;}
+
+  .week{margin-bottom:44px;}
+  .week-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 22px;padding:14px 18px;border-radius:12px;background:linear-gradient(135deg,rgba(236, 72, 153, .16),rgba(236, 72, 153, .04));border:1px solid rgba(236, 72, 153, .28);}
+  .week-label{font-size:1.15rem;font-weight:800;letter-spacing:-.01em;color:#ec4899;}
+  .week-sub{font-size:.9rem;color:var(--text);opacity:.85;}
+  .week-count{margin-left:auto;font-size:.7rem;color:var(--muted);white-space:nowrap;}
+  @media (max-width:640px){.week-count{margin-left:0;flex-basis:100%;}}
+  .section{margin-bottom:32px;}
+  .section-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+  .section-icon{font-size:1.2rem;line-height:1;}
+  .section-title{font-size:.95rem;font-weight:700;color:var(--text);}
+  .section-badge{margin-left:auto;background:var(--surface2);border-radius:10px;padding:2px 8px;font-size:.68rem;color:var(--muted);}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:7px;}
+  a.card{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:11px 12px;text-decoration:none;color:var(--text);display:flex;align-items:flex-start;gap:9px;transition:.15s;}
+  a.card:hover{border-color:var(--c,#ec4899);background:var(--surface2);transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.5);}
+  .num{flex-shrink:0;background:var(--c,#ec4899);color:#fff;border-radius:5px;padding:2px 5px;font-size:.6rem;font-weight:800;margin-top:1px;opacity:.9;letter-spacing:.3px;}
+  .ctitle{font-size:.75rem;line-height:1.45;color:var(--text);}
+</style>
+<script defer src="https://activetransport.app/static/tool-track.js"></script>
+</head>
+<body>
+
+<header>
+  <h1>ReproStudy</h1>
+  <p>Drag &amp; Drop Study Games &nbsp;&middot;&nbsp; Reproductive Systems &amp; Breast Health</p>
+  <div class="pills">
+    <span class="pill"><b>116</b> games</span>
+    <span class="pill"><b>29</b> source bricks</span>
+    <span class="pill"><b>29</b> sections</span>
+  </div>
+  <div class="search-wrap">
+    <input type="text" id="search" placeholder="Search by topic or number&hellip;" autocomplete="off">
+    <span class="search-ico">&#x2315;</span>
+  </div>
+</header>
+
+<main>
+<div class="no-results" id="noResults">No games match your search.</div>
+
+<div class="week" data-week>
+  <div class="week-head">
+    <span class="week-label">Week 1</span>
+    <span class="week-sub">Anatomy, Development, Hormones & Cycles</span>
+    <span class="week-count">14 lectures &middot; 56 games</span>
+  </div>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">🩸</span>
+    <span class="section-title">Anatomy and Histology of the Female Reproductive System</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_01_epithelial_linings.html" style="--c:#f59e0b"><span class="num">01</span><span class="ctitle">Epithelial Linings of the Female Tract</span></a>
+    <a class="card" href="repro_02_uterine_tube_segments.html" style="--c:#f59e0b"><span class="num">02</span><span class="ctitle">Segments of the Uterine Tube</span></a>
+    <a class="card" href="repro_03_pelvic_ligaments.html" style="--c:#f59e0b"><span class="num">03</span><span class="ctitle">Ligaments Supporting the Pelvic Organs</span></a>
+    <a class="card" href="repro_04_pelvic_neurovasculature.html" style="--c:#f59e0b"><span class="num">04</span><span class="ctitle">Pelvic Vessels and Lymphatics: Rules and Exceptions</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">🧬</span>
+    <span class="section-title">Anatomy and Histology of the Male Reproductive System</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_05_duct_gland_histology.html" style="--c:#10b981"><span class="num">05</span><span class="ctitle">Ducts and Glands: Histology and Function</span></a>
+    <a class="card" href="repro_06_prostate_zones.html" style="--c:#10b981"><span class="num">06</span><span class="ctitle">Zones of the Prostate</span></a>
+    <a class="card" href="repro_07_vascular_supply.html" style="--c:#10b981"><span class="num">07</span><span class="ctitle">Blood Supply and Drainage</span></a>
+    <a class="card" href="repro_08_autonomic_function.html" style="--c:#10b981"><span class="num">08</span><span class="ctitle">Point, Shoot, and Secrete: Autonomic Control</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">⚗️</span>
+    <span class="section-title">Structure and Function of the Breast</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_09_gross_anatomy_support.html" style="--c:#8b5cf6"><span class="num">09</span><span class="ctitle">Gross Anatomy and Support of the Breast</span></a>
+    <a class="card" href="repro_10_tdlu_histology.html" style="--c:#8b5cf6"><span class="num">10</span><span class="ctitle">Histology of the TDLU and Duct System</span></a>
+    <a class="card" href="repro_11_breast_lifespan.html" style="--c:#8b5cf6"><span class="num">11</span><span class="ctitle">The Breast Across the Reproductive Lifespan</span></a>
+    <a class="card" href="repro_12_lymphatic_drainage.html" style="--c:#8b5cf6"><span class="num">12</span><span class="ctitle">Lymphatic Drainage of the Breast</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">🔬</span>
+    <span class="section-title">Structure and Function of the Testis</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_13_testis_anatomy.html" style="--c:#06b6d4"><span class="num">13</span><span class="ctitle">Testicular Anatomy and Duct System</span></a>
+    <a class="card" href="repro_14_testis_cell_types.html" style="--c:#06b6d4"><span class="num">14</span><span class="ctitle">Cells of the Testis</span></a>
+    <a class="card" href="repro_15_germ_cell_stages.html" style="--c:#06b6d4"><span class="num">15</span><span class="ctitle">Stages of Spermatogenesis</span></a>
+    <a class="card" href="repro_16_hormonal_regulation.html" style="--c:#06b6d4"><span class="num">16</span><span class="ctitle">Hormonal Regulation of the Testis</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">🧪</span>
+    <span class="section-title">Inclusive Language and Health Equity</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_17_sex_gender_orientation.html" style="--c:#ec4899"><span class="num">17</span><span class="ctitle">Sex, Gender, and Orientation: Core Concepts</span></a>
+    <a class="card" href="repro_18_identity_terms.html" style="--c:#ec4899"><span class="num">18</span><span class="ctitle">Identity Terminology</span></a>
+    <a class="card" href="repro_19_inclusive_language_swaps.html" style="--c:#ec4899"><span class="num">19</span><span class="ctitle">Inclusive Language in the Clinic</span></a>
+    <a class="card" href="repro_20_gender_affirming_care.html" style="--c:#ec4899"><span class="num">20</span><span class="ctitle">Gender-Affirming Care Options</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">💊</span>
+    <span class="section-title">Sex Determination and Reproductive Systems Development</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_21_hormonal_signals.html" style="--c:#84cc16"><span class="num">21</span><span class="ctitle">Hormonal Signals of Sex Determination</span></a>
+    <a class="card" href="repro_22_duct_fates.html" style="--c:#84cc16"><span class="num">22</span><span class="ctitle">Fates of the Indifferent Structures</span></a>
+    <a class="card" href="repro_23_external_homologs.html" style="--c:#84cc16"><span class="num">23</span><span class="ctitle">External Genitalia Homologs</span></a>
+    <a class="card" href="repro_24_dsd_disorders.html" style="--c:#84cc16"><span class="num">24</span><span class="ctitle">Disorders of Reproductive Development</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">🩺</span>
+    <span class="section-title">Congenital Disorders of the Reproductive Systems</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_25_mullerian_vaginal_anomalies.html" style="--c:#f97316"><span class="num">25</span><span class="ctitle">Mullerian and Vaginal Anomalies</span></a>
+    <a class="card" href="repro_26_male_reproductive_anomalies.html" style="--c:#f97316"><span class="num">26</span><span class="ctitle">Male Reproductive Anomalies</span></a>
+    <a class="card" href="repro_27_disorders_sexual_development.html" style="--c:#f97316"><span class="num">27</span><span class="ctitle">Disorders of Sexual Development</span></a>
+    <a class="card" href="repro_28_embryonic_structures_anomalies.html" style="--c:#f97316"><span class="num">28</span><span class="ctitle">Embryonic Structures and Their Anomalies</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">⚡</span>
+    <span class="section-title">Errors in Morphogenesis</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_29_mechanism_categories.html" style="--c:#3b82f6"><span class="num">29</span><span class="ctitle">Four Mechanisms of Developmental Error</span></a>
+    <a class="card" href="repro_30_teratogenic_medications.html" style="--c:#3b82f6"><span class="num">30</span><span class="ctitle">Teratogenic Medications</span></a>
+    <a class="card" href="repro_31_other_teratogens.html" style="--c:#3b82f6"><span class="num">31</span><span class="ctitle">Substances, Physical Agents, and Maternal Conditions</span></a>
+    <a class="card" href="repro_32_anomaly_patterns.html" style="--c:#3b82f6"><span class="num">32</span><span class="ctitle">Sequence, Syndrome, or Association?</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">🩸</span>
+    <span class="section-title">Fertilization</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_33_germ_cell_stages.html" style="--c:#f59e0b"><span class="num">33</span><span class="ctitle">Germ Cell Stages and Meiotic Arrests</span></a>
+    <a class="card" href="repro_34_ovum_layers_sperm_structures.html" style="--c:#f59e0b"><span class="num">34</span><span class="ctitle">Layers of the Ovum and Sperm Machinery</span></a>
+    <a class="card" href="repro_35_fertilization_sequence.html" style="--c:#f59e0b"><span class="num">35</span><span class="ctitle">Biochemical Events of Fertilization</span></a>
+    <a class="card" href="repro_36_sperm_journey.html" style="--c:#f59e0b"><span class="num">36</span><span class="ctitle">The Sperm&#39;s Journey to the Egg</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">🧬</span>
+    <span class="section-title">Estrogen and Progesterone</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_37_steroid_source_cells.html" style="--c:#10b981"><span class="num">37</span><span class="ctitle">Where the Sex Steroids Are Made</span></a>
+    <a class="card" href="repro_38_hpg_axis_regulators.html" style="--c:#10b981"><span class="num">38</span><span class="ctitle">Hormones of the Hypothalamic-Pituitary-Gonadal Axis</span></a>
+    <a class="card" href="repro_39_hormone_target_effects.html" style="--c:#10b981"><span class="num">39</span><span class="ctitle">Estrogen or Progesterone: Who Does What</span></a>
+    <a class="card" href="repro_40_steroid_molecules_compared.html" style="--c:#10b981"><span class="num">40</span><span class="ctitle">The Steroid Cast: Estradiol, Estrone, Progesterone, Androstenedione</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">⚗️</span>
+    <span class="section-title">Androgens</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_41_androgen_lineup.html" style="--c:#8b5cf6"><span class="num">41</span><span class="ctitle">Meet the Androgens</span></a>
+    <a class="card" href="repro_42_hpg_axis_signals.html" style="--c:#8b5cf6"><span class="num">42</span><span class="ctitle">HPG Axis Signals</span></a>
+    <a class="card" href="repro_43_androgen_sources.html" style="--c:#8b5cf6"><span class="num">43</span><span class="ctitle">Where Androgens Come From</span></a>
+    <a class="card" href="repro_44_androgen_clinical.html" style="--c:#8b5cf6"><span class="num">44</span><span class="ctitle">Androgens in the Clinic</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">🔬</span>
+    <span class="section-title">Ovulation and the Menstrual Cycle</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_45_follicle_stages.html" style="--c:#06b6d4"><span class="num">45</span><span class="ctitle">Stages of Folliculogenesis</span></a>
+    <a class="card" href="repro_46_cycle_hormones.html" style="--c:#06b6d4"><span class="num">46</span><span class="ctitle">Hormones of the Cycle</span></a>
+    <a class="card" href="repro_47_cycle_phases.html" style="--c:#06b6d4"><span class="num">47</span><span class="ctitle">Phases of the Ovarian and Uterine Cycles</span></a>
+    <a class="card" href="repro_48_feedback_signals.html" style="--c:#06b6d4"><span class="num">48</span><span class="ctitle">Feedback Signals on the Hypothalamus and Pituitary</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">🧪</span>
+    <span class="section-title">Amenorrhea and Dysmenorrhea</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_49_amenorrhea_causes.html" style="--c:#ec4899"><span class="num">49</span><span class="ctitle">Localize the Amenorrhea</span></a>
+    <a class="card" href="repro_50_secondary_dysmenorrhea_causes.html" style="--c:#ec4899"><span class="num">50</span><span class="ctitle">Causes of Secondary Dysmenorrhea</span></a>
+    <a class="card" href="repro_51_primary_vs_secondary.html" style="--c:#ec4899"><span class="num">51</span><span class="ctitle">Primary vs Secondary: Amenorrhea and Dysmenorrhea</span></a>
+    <a class="card" href="repro_52_targeted_treatments.html" style="--c:#ec4899"><span class="num">52</span><span class="ctitle">Treat the Underlying Cause</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">💊</span>
+    <span class="section-title">Puberty and Hormonal Regulation</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_53_hormones_of_puberty.html" style="--c:#84cc16"><span class="num">53</span><span class="ctitle">Hormones of Puberty</span></a>
+    <a class="card" href="repro_54_axis_disorder_patterns.html" style="--c:#84cc16"><span class="num">54</span><span class="ctitle">HPG-Axis Disorders: Patterns at a Glance</span></a>
+    <a class="card" href="repro_55_milestones_and_growth.html" style="--c:#84cc16"><span class="num">55</span><span class="ctitle">Milestones of Maturation and Growth</span></a>
+    <a class="card" href="repro_56_delayed_puberty_causes.html" style="--c:#84cc16"><span class="num">56</span><span class="ctitle">Causes of Delayed Puberty</span></a>
+  </div>
+</section>
+</div>
+
+<div class="week" data-week>
+  <div class="week-head">
+    <span class="week-label">Week 2</span>
+    <span class="week-sub">Repro Health, Female & Male Pathology</span>
+    <span class="week-count">15 lectures &middot; 60 games</span>
+  </div>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">🩺</span>
+    <span class="section-title">Contraception</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_57_contraceptive_mechanisms.html" style="--c:#f97316"><span class="num">57</span><span class="ctitle">How Contraceptives Prevent Pregnancy</span></a>
+    <a class="card" href="repro_58_method_report_card.html" style="--c:#f97316"><span class="num">58</span><span class="ctitle">Contraceptive Method Report Card</span></a>
+    <a class="card" href="repro_59_ocp_formulations.html" style="--c:#f97316"><span class="num">59</span><span class="ctitle">Combined OCP Formulations</span></a>
+    <a class="card" href="repro_60_pill_and_progestin_compare.html" style="--c:#f97316"><span class="num">60</span><span class="ctitle">Combined vs Progestin-Only Options</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">⚡</span>
+    <span class="section-title">Family Planning, Preconception Care and Infertility</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_61_preconception_recommendations.html" style="--c:#3b82f6"><span class="num">61</span><span class="ctitle">Core Preconception Recommendations</span></a>
+    <a class="card" href="repro_62_preconception_screening_components.html" style="--c:#3b82f6"><span class="num">62</span><span class="ctitle">Preconception Screening Components</span></a>
+    <a class="card" href="repro_63_semen_analysis_male_factor.html" style="--c:#3b82f6"><span class="num">63</span><span class="ctitle">Semen Analysis and Male Factor Findings</span></a>
+    <a class="card" href="repro_64_infertility_treatments.html" style="--c:#3b82f6"><span class="num">64</span><span class="ctitle">Infertility Treatment Options</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">🩸</span>
+    <span class="section-title">Sexual Health and Complications</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_65_response_cycle_phases.html" style="--c:#f59e0b"><span class="num">65</span><span class="ctitle">Phases of the Sexual Response Cycle</span></a>
+    <a class="card" href="repro_66_spinal_control_genital_response.html" style="--c:#f59e0b"><span class="num">66</span><span class="ctitle">Spinal Control of Genital Responses</span></a>
+    <a class="card" href="repro_67_neurotransmitters_sexual_response.html" style="--c:#f59e0b"><span class="num">67</span><span class="ctitle">Neurotransmitter Modulation of Sexual Response</span></a>
+    <a class="card" href="repro_68_sexual_dysfunction_disorders.html" style="--c:#f59e0b"><span class="num">68</span><span class="ctitle">Disorders of Sexual Response</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">🧬</span>
+    <span class="section-title">Menopause and Andropause</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_69_stages_and_transitions.html" style="--c:#10b981"><span class="num">69</span><span class="ctitle">Reproductive Aging: Stage by Stage</span></a>
+    <a class="card" href="repro_70_menopause_complications.html" style="--c:#10b981"><span class="num">70</span><span class="ctitle">Complications of Menopause</span></a>
+    <a class="card" href="repro_71_menopause_pharmacology.html" style="--c:#10b981"><span class="num">71</span><span class="ctitle">Menopause Treatment Toolbox</span></a>
+    <a class="card" href="repro_72_hrt_routes_and_safety.html" style="--c:#10b981"><span class="num">72</span><span class="ctitle">Hormone Routes, Risks, and Trials</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">⚗️</span>
+    <span class="section-title">Disorders of Sex Hormones</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_73_t_lh_patterns.html" style="--c:#8b5cf6"><span class="num">73</span><span class="ctitle">Testosterone and LH Patterns</span></a>
+    <a class="card" href="repro_74_female_androgen_excess.html" style="--c:#8b5cf6"><span class="num">74</span><span class="ctitle">Female Androgen Excess</span></a>
+    <a class="card" href="repro_75_estrogen_disorders_by_sex.html" style="--c:#8b5cf6"><span class="num">75</span><span class="ctitle">Estrogen Excess vs Deficiency by Sex</span></a>
+    <a class="card" href="repro_76_hormone_complications.html" style="--c:#8b5cf6"><span class="num">76</span><span class="ctitle">Long-Term Complications</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">🔬</span>
+    <span class="section-title">Benign Endometrial Disorders</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_77_disorder_overview.html" style="--c:#06b6d4"><span class="num">77</span><span class="ctitle">The Four Benign Endometrial Disorders</span></a>
+    <a class="card" href="repro_78_endometriosis_drugs.html" style="--c:#06b6d4"><span class="num">78</span><span class="ctitle">Medical Therapy of Endometriosis</span></a>
+    <a class="card" href="repro_79_histology_match.html" style="--c:#06b6d4"><span class="num">79</span><span class="ctitle">Under the Microscope</span></a>
+    <a class="card" href="repro_80_ectopic_mechanisms.html" style="--c:#06b6d4"><span class="num">80</span><span class="ctitle">Endometrium in the Wrong Place</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">🧪</span>
+    <span class="section-title">Uterine Tumors</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_81_tcga_subtypes.html" style="--c:#ec4899"><span class="num">81</span><span class="ctitle">TCGA Molecular Subtypes of Endometrial Cancer</span></a>
+    <a class="card" href="repro_82_uterine_tumor_overview.html" style="--c:#ec4899"><span class="num">82</span><span class="ctitle">Four Uterine Tumors at a Glance</span></a>
+    <a class="card" href="repro_83_molecular_players.html" style="--c:#ec4899"><span class="num">83</span><span class="ctitle">Genes, Pathways, and Drugs of Uterine Tumors</span></a>
+    <a class="card" href="repro_84_myometrial_masses.html" style="--c:#ec4899"><span class="num">84</span><span class="ctitle">Leiomyoma, Its Variants, and Leiomyosarcoma</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">💊</span>
+    <span class="section-title">Ovarian Cysts</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_85_cyst_types.html" style="--c:#84cc16"><span class="num">85</span><span class="ctitle">Ovarian Cyst Types</span></a>
+    <a class="card" href="repro_86_pmos_hormones.html" style="--c:#84cc16"><span class="num">86</span><span class="ctitle">PMOS Hormone Cascade</span></a>
+    <a class="card" href="repro_87_cyst_workup.html" style="--c:#84cc16"><span class="num">87</span><span class="ctitle">Evaluating a Pelvic Mass</span></a>
+    <a class="card" href="repro_88_pmos_treatment.html" style="--c:#84cc16"><span class="num">88</span><span class="ctitle">PMOS Treatment Toolkit</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">🩺</span>
+    <span class="section-title">Ovarian Tumors (Part 1 of 2)</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_89_epithelial_tumor_types.html" style="--c:#f97316"><span class="num">89</span><span class="ctitle">Surface Epithelial Tumor Types</span></a>
+    <a class="card" href="repro_90_serous_spectrum.html" style="--c:#f97316"><span class="num">90</span><span class="ctitle">The Serous Tumor Spectrum</span></a>
+    <a class="card" href="repro_91_tumor_markers.html" style="--c:#f97316"><span class="num">91</span><span class="ctitle">Ovarian Tumor Markers</span></a>
+    <a class="card" href="repro_92_workup_tools.html" style="--c:#f97316"><span class="num">92</span><span class="ctitle">Diagnosing an Ovarian Mass</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">⚡</span>
+    <span class="section-title">Ovarian Tumors (Part 2 of 2)</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_93_sex_cord_stromal.html" style="--c:#3b82f6"><span class="num">93</span><span class="ctitle">Sex Cord Stromal Tumors</span></a>
+    <a class="card" href="repro_94_germ_cell_ids.html" style="--c:#3b82f6"><span class="num">94</span><span class="ctitle">Germ Cell Tumor Identification</span></a>
+    <a class="card" href="repro_95_malignant_treatment.html" style="--c:#3b82f6"><span class="num">95</span><span class="ctitle">Treating and Tracking Malignant Ovarian Tumors</span></a>
+    <a class="card" href="repro_96_other_lesions_mets.html" style="--c:#3b82f6"><span class="num">96</span><span class="ctitle">Other Lesions and Metastases to the Ovary</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">🩸</span>
+    <span class="section-title">Disorders of the Penis</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_97_hpv_penile_lesions.html" style="--c:#f59e0b"><span class="num">97</span><span class="ctitle">HPV-Related Penile Lesions</span></a>
+    <a class="card" href="repro_98_mechanical_disorders.html" style="--c:#f59e0b"><span class="num">98</span><span class="ctitle">Peyronie Disease and Mechanical Emergencies</span></a>
+    <a class="card" href="repro_99_urethral_disorders.html" style="--c:#f59e0b"><span class="num">99</span><span class="ctitle">Congenital and Traumatic Urethral Disorders</span></a>
+    <a class="card" href="repro_100_hpv_lesion_treatment.html" style="--c:#f59e0b"><span class="num">100</span><span class="ctitle">Penile Lesion Treatment Ladder</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">🧬</span>
+    <span class="section-title">Benign Testicular Disorders</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_101_scrotal_disorder_snapshot.html" style="--c:#10b981"><span class="num">101</span><span class="ctitle">Benign Scrotal Disorder Snapshot</span></a>
+    <a class="card" href="repro_102_scrotal_exam_signs.html" style="--c:#10b981"><span class="num">102</span><span class="ctitle">Scrotal Physical Exam Signs</span></a>
+    <a class="card" href="repro_103_left_varicocele_anatomy.html" style="--c:#10b981"><span class="num">103</span><span class="ctitle">Why Varicoceles Favor the Left</span></a>
+    <a class="card" href="repro_104_hydrocele_and_cysts.html" style="--c:#10b981"><span class="num">104</span><span class="ctitle">Hydroceles, Spermatoceles, and Epididymal Cysts</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">⚗️</span>
+    <span class="section-title">Testicular Tumors</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_105_gct_pathology.html" style="--c:#8b5cf6"><span class="num">105</span><span class="ctitle">Germ Cell Tumor Pathology</span></a>
+    <a class="card" href="repro_106_presentation_markers.html" style="--c:#8b5cf6"><span class="num">106</span><span class="ctitle">Presentations and Tumor Markers</span></a>
+    <a class="card" href="repro_107_nongct_older_men.html" style="--c:#8b5cf6"><span class="num">107</span><span class="ctitle">Non-Germ Cell and Older-Patient Tumors</span></a>
+    <a class="card" href="repro_108_workup_treatment.html" style="--c:#8b5cf6"><span class="num">108</span><span class="ctitle">Work-up and Treatment Decisions</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">🔬</span>
+    <span class="section-title">Benign Prostate Disorders</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_109_bph_treatment_toolbox.html" style="--c:#06b6d4"><span class="num">109</span><span class="ctitle">BPH Treatment Toolbox</span></a>
+    <a class="card" href="repro_110_prostatitis_four_types.html" style="--c:#06b6d4"><span class="num">110</span><span class="ctitle">The Four Types of Prostatitis</span></a>
+    <a class="card" href="repro_111_prostatitis_micro.html" style="--c:#06b6d4"><span class="num">111</span><span class="ctitle">Prostatitis Under the Microscope</span></a>
+    <a class="card" href="repro_112_dre_psa_next_steps.html" style="--c:#06b6d4"><span class="num">112</span><span class="ctitle">DRE, PSA, and Next Steps</span></a>
+  </div>
+</section>
+
+<section class="section" data-section>
+  <div class="section-head">
+    <span class="section-icon">🧪</span>
+    <span class="section-title">Prostate Cancer</span>
+    <span class="section-badge">4 games</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="repro_113_adt_pharmacology.html" style="--c:#ec4899"><span class="num">113</span><span class="ctitle">Androgen Deprivation Pharmacology</span></a>
+    <a class="card" href="repro_114_diagnostic_workup.html" style="--c:#ec4899"><span class="num">114</span><span class="ctitle">Diagnosing Prostate Cancer</span></a>
+    <a class="card" href="repro_115_management_strategies.html" style="--c:#ec4899"><span class="num">115</span><span class="ctitle">Choosing a Management Strategy</span></a>
+    <a class="card" href="repro_116_routes_of_spread.html" style="--c:#ec4899"><span class="num">116</span><span class="ctitle">How Prostate Cancer Spreads</span></a>
+  </div>
+</section>
+</div>
+
+</main>
+
+<script>
+document.getElementById('search').addEventListener('input', function() {
+  const q = this.value.toLowerCase().trim();
+  let anyVisible = false;
+  document.querySelectorAll('.section').forEach(sec => {
+    let secVisible = false;
+    sec.querySelectorAll('.card').forEach(c => {
+      const match = c.textContent.toLowerCase().includes(q);
+      c.style.display = match ? '' : 'none';
+      if (match) secVisible = true;
+    });
+    sec.style.display = secVisible ? '' : 'none';
+    if (secVisible) anyVisible = true;
+  });
+  // A week heading with nothing left under it is just noise while searching.
+  document.querySelectorAll('.week').forEach(wk => {
+    const has = Array.from(wk.querySelectorAll('.section'))
+      .some(s => s.style.display !== 'none');
+    wk.style.display = has ? '' : 'none';
+  });
+  document.getElementById('noResults').style.display = anyVisible ? 'none' : 'block';
+});
+</script>
+</body>
+</html>
