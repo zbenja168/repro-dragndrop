@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How Prostate Cancer Spreads - Drag &amp; Drop Study Game</title>
+    <title>FGM, Virginity Testing, and Related Procedures - Drag &amp; Drop Study Game</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -16,24 +16,24 @@
         .container { max-width: 1600px; margin: 0 auto; }
         h1 {
             text-align: center;
-            color: #06b6d4;
+            color: #f97316;
             margin-bottom: 10px;
             font-size: 2.2em;
-            text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+            text-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
         }
         .subtitle { text-align: center; color: #a0a0a0; margin-bottom: 25px; font-size: 1.1em; }
         .stats-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px; }
         .stats { display: flex; gap: 25px; flex-wrap: wrap; }
         .stat-item {
-            background: rgba(6, 182, 212, 0.1);
+            background: rgba(249, 115, 22, 0.1);
             padding: 12px 20px; border-radius: 8px;
-            border: 1px solid rgba(6, 182, 212, 0.3);
+            border: 1px solid rgba(249, 115, 22, 0.3);
         }
-        .stat-label { color: #06b6d4; font-weight: bold; margin-right: 8px; }
+        .stat-label { color: #f97316; font-weight: bold; margin-right: 8px; }
         .controls { display: flex; gap: 12px; flex-wrap: wrap; }
         .btn { padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; font-size: 0.95em; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
-        .btn-primary { background: linear-gradient(135deg, #06b6d4 0%, #0e7490 100%); color: white; }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4); }
+        .btn-primary { background: linear-gradient(135deg, #f97316 0%, #c2410c 100%); color: white; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4); }
         .btn-secondary { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; }
         .btn-secondary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245,158,11,0.4); }
         .btn-success { background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; }
@@ -45,58 +45,58 @@
             position: sticky; top: 20px;
             background: rgba(10, 15, 28, 0.95);
             border-radius: 12px; padding: 20px;
-            border: 2px solid rgba(6, 182, 212, 0.3);
+            border: 2px solid rgba(249, 115, 22, 0.3);
             box-shadow: 0 8px 32px rgba(0,0,0,0.5);
         }
-        .word-bank-title { color: #06b6d4; font-size: 1.3em; margin-bottom: 15px; text-align: center; font-weight: bold; }
-        .tabs { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 15px; padding-bottom: 6px; border-bottom: 2px solid rgba(6, 182, 212, 0.3); }
+        .word-bank-title { color: #f97316; font-size: 1.3em; margin-bottom: 15px; text-align: center; font-weight: bold; }
+        .tabs { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 15px; padding-bottom: 6px; border-bottom: 2px solid rgba(249, 115, 22, 0.3); }
         .tab { flex: 1 1 auto; min-width: 0; padding: 8px 10px; background: rgba(255,255,255,0.05); border: none; color: #a0a0a0; cursor: pointer; transition: all 0.3s ease; font-size: 0.82em; line-height: 1.25; font-weight: 600; border-radius: 8px 8px 0 0; text-align: center; overflow-wrap: anywhere; }
-        .tab.active { background: linear-gradient(135deg, #06b6d4 0%, #0e7490 100%); color: white; }
+        .tab.active { background: linear-gradient(135deg, #f97316 0%, #c2410c 100%); color: white; }
         .tab:hover:not(.active) { background: rgba(255,255,255,0.1); color: #e4e4e4; }
         .word-bank { min-height: 400px; max-height: 70vh; overflow-y: auto; padding: 15px; background: rgba(0,0,0,0.3); border-radius: 8px; display: none; }
         .word-bank.active { display: block; }
         .word-bank::-webkit-scrollbar { width: 8px; }
         .word-bank::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 4px; }
-        .word-bank::-webkit-scrollbar-thumb { background: rgba(6, 182, 212, 0.5); border-radius: 4px; }
+        .word-bank::-webkit-scrollbar-thumb { background: rgba(249, 115, 22, 0.5); border-radius: 4px; }
         .draggable-item {
             background: linear-gradient(135deg, #1a2235 0%, #131a2a 100%);
             padding: 12px 15px; margin-bottom: 10px; border-radius: 8px; cursor: move;
-            border: 2px solid rgba(6, 182, 212, 0.4); transition: all 0.3s ease;
+            border: 2px solid rgba(249, 115, 22, 0.4); transition: all 0.3s ease;
             font-size: 0.95em; line-height: 1.4;
         }
-        .draggable-item:hover { background: linear-gradient(135deg, #232d44 0%, #1a2235 100%); border-color: #06b6d4; transform: translateX(5px); box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3); }
+        .draggable-item:hover { background: linear-gradient(135deg, #232d44 0%, #1a2235 100%); border-color: #f97316; transform: translateX(5px); box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3); }
         .draggable-item.dragging { opacity: 0.5; transform: rotate(2deg); }
         .cards-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); gap: 20px; }
-        .drug-card { background: rgba(15, 23, 42, 0.95); border-radius: 12px; padding: 20px; border: 2px solid rgba(6, 182, 212, 0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
+        .drug-card { background: rgba(15, 23, 42, 0.95); border-radius: 12px; padding: 20px; border: 2px solid rgba(249, 115, 22, 0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
         .drug-card-title {
-            background: linear-gradient(135deg, #06b6d4 0%, #0e7490 100%);
+            background: linear-gradient(135deg, #f97316 0%, #c2410c 100%);
             color: white; padding: 12px; border-radius: 8px;
             font-size: 1.2em; font-weight: bold; margin-bottom: 15px; text-align: center;
-            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
         }
         .drop-zones { display: grid; gap: 12px; }
         .drop-row { display: grid; grid-template-columns: 140px 1fr; gap: 10px; align-items: start; }
-        .drop-label { background: rgba(6, 182, 212, 0.1); padding: 10px; border-radius: 6px; font-weight: 600; color: #06b6d4; font-size: 0.9em; display: flex; align-items: center; border: 1px solid rgba(6, 182, 212, 0.3); }
-        .drop-zone { min-height: 60px; background: rgba(0,0,0,0.3); border: 2px dashed rgba(6, 182, 212, 0.3); border-radius: 8px; padding: 10px; transition: all 0.3s ease; display: flex; flex-direction: column; gap: 8px; }
-        .drop-zone.drag-over { background: rgba(6, 182, 212, 0.2); border-color: #06b6d4; border-style: solid; box-shadow: 0 0 20px rgba(6, 182, 212, 0.3); }
-        .dropped-item { background: linear-gradient(135deg, #1a2235 0%, #131a2a 100%); padding: 10px 12px; border-radius: 6px; cursor: move; border: 2px solid rgba(6, 182, 212, 0.4); transition: all 0.3s ease; font-size: 0.9em; line-height: 1.4; }
-        .dropped-item:hover { background: linear-gradient(135deg, #232d44 0%, #1a2235 100%); border-color: #06b6d4; }
+        .drop-label { background: rgba(249, 115, 22, 0.1); padding: 10px; border-radius: 6px; font-weight: 600; color: #f97316; font-size: 0.9em; display: flex; align-items: center; border: 1px solid rgba(249, 115, 22, 0.3); }
+        .drop-zone { min-height: 60px; background: rgba(0,0,0,0.3); border: 2px dashed rgba(249, 115, 22, 0.3); border-radius: 8px; padding: 10px; transition: all 0.3s ease; display: flex; flex-direction: column; gap: 8px; }
+        .drop-zone.drag-over { background: rgba(249, 115, 22, 0.2); border-color: #f97316; border-style: solid; box-shadow: 0 0 20px rgba(249, 115, 22, 0.3); }
+        .dropped-item { background: linear-gradient(135deg, #1a2235 0%, #131a2a 100%); padding: 10px 12px; border-radius: 6px; cursor: move; border: 2px solid rgba(249, 115, 22, 0.4); transition: all 0.3s ease; font-size: 0.9em; line-height: 1.4; }
+        .dropped-item:hover { background: linear-gradient(135deg, #232d44 0%, #1a2235 100%); border-color: #f97316; }
         .dropped-item.correct { background: linear-gradient(135deg, #0f9b0f 0%, #0a7c0a 100%); border-color: #00ff00; animation: correctPulse 0.5s ease; }
         .dropped-item.incorrect { background: linear-gradient(135deg, #c41e3a 0%, #9a1829 100%); border-color: #ff4444; animation: incorrectShake 0.5s ease; }
         @keyframes correctPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05);box-shadow:0 0 20px rgba(0,255,0,0.5)} }
         @keyframes incorrectShake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
         .summary-modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; padding: 20px; }
         .summary-modal.active { display: flex; }
-        .summary-content { background: linear-gradient(135deg, #0a0f1c 0%, #0f1729 100%); border-radius: 12px; padding: 30px; max-width: 900px; max-height: 90vh; overflow-y: auto; border: 2px solid rgba(6, 182, 212, 0.5); box-shadow: 0 10px 50px rgba(0,0,0,0.8); }
+        .summary-content { background: linear-gradient(135deg, #0a0f1c 0%, #0f1729 100%); border-radius: 12px; padding: 30px; max-width: 900px; max-height: 90vh; overflow-y: auto; border: 2px solid rgba(249, 115, 22, 0.5); box-shadow: 0 10px 50px rgba(0,0,0,0.8); }
         .summary-content::-webkit-scrollbar { width: 10px; }
         .summary-content::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); border-radius: 5px; }
-        .summary-content::-webkit-scrollbar-thumb { background: rgba(6, 182, 212, 0.5); border-radius: 5px; }
-        .summary-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 2px solid rgba(6, 182, 212, 0.3); }
-        .summary-title { color: #06b6d4; font-size: 1.8em; font-weight: bold; }
+        .summary-content::-webkit-scrollbar-thumb { background: rgba(249, 115, 22, 0.5); border-radius: 5px; }
+        .summary-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 2px solid rgba(249, 115, 22, 0.3); }
+        .summary-title { color: #f97316; font-size: 1.8em; font-weight: bold; }
         .close-btn { background: rgba(255,68,68,0.2); border: 2px solid #ff4444; color: #ff4444; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; }
         .close-btn:hover { background: #ff4444; color: white; }
-        .summary-drug { margin-bottom: 25px; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 8px; border-left: 4px solid #06b6d4; }
-        .summary-drug-title { color: #06b6d4; font-size: 1.3em; margin-bottom: 15px; font-weight: bold; }
+        .summary-drug { margin-bottom: 25px; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 8px; border-left: 4px solid #f97316; }
+        .summary-drug-title { color: #f97316; font-size: 1.3em; margin-bottom: 15px; font-weight: bold; }
         .summary-category { margin-bottom: 12px; }
         .summary-category-title { color: #f59e0b; font-weight: 600; margin-bottom: 5px; font-size: 1.05em; }
         .summary-category-content { color: #e4e4e4; padding-left: 15px; line-height: 1.6; }
@@ -118,11 +118,11 @@
 </head>
 <body>
 <a href="repro_index.html" style="position:fixed;top:12px;left:12px;z-index:9999;background:rgba(0,0,0,0.55);color:#94a3b8;border:1px solid rgba(255,255,255,0.13);border-radius:20px;padding:5px 13px;font-size:.72rem;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(8px);transition:.15s;letter-spacing:.3px;" onmouseover="this.style.color='#f1f5f9';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='#94a3b8';this.style.borderColor='rgba(255,255,255,0.13)'">&#8592; Index</a>
-<div style="position:fixed;top:12px;right:12px;z-index:9999;display:flex;gap:8px;"><a href="repro_115_management_strategies.html" style="background:rgba(0,0,0,0.72);color:#e2e8f0;border:1px solid rgba(255,255,255,0.22);border-radius:22px;padding:8px 18px;font-size:.85rem;font-weight:600;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(10px);transition:.15s;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='rgba(0,0,0,0.88)'" onmouseout="this.style.color='#e2e8f0';this.style.borderColor='rgba(255,255,255,0.22)';this.style.background='rgba(0,0,0,0.72)'">&#8592; Prev</a><a href="repro_117_vaginal_ph_and_flora.html" style="background:rgba(0,0,0,0.72);color:#e2e8f0;border:1px solid rgba(255,255,255,0.22);border-radius:22px;padding:8px 18px;font-size:.85rem;font-weight:600;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(10px);transition:.15s;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='rgba(0,0,0,0.88)'" onmouseout="this.style.color='#e2e8f0';this.style.borderColor='rgba(255,255,255,0.22)';this.style.background='rgba(0,0,0,0.72)'">Next &#8594;</a></div>
+<div style="position:fixed;top:12px;right:12px;z-index:9999;display:flex;gap:8px;"><a href="repro_190_minors_arkansas.html" style="background:rgba(0,0,0,0.72);color:#e2e8f0;border:1px solid rgba(255,255,255,0.22);border-radius:22px;padding:8px 18px;font-size:.85rem;font-weight:600;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(10px);transition:.15s;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='rgba(0,0,0,0.88)'" onmouseout="this.style.color='#e2e8f0';this.style.borderColor='rgba(255,255,255,0.22)';this.style.background='rgba(0,0,0,0.72)'">&#8592; Prev</a><a href="repro_192_srhr_components.html" style="background:rgba(0,0,0,0.72);color:#e2e8f0;border:1px solid rgba(255,255,255,0.22);border-radius:22px;padding:8px 18px;font-size:.85rem;font-weight:600;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(10px);transition:.15s;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='rgba(0,0,0,0.88)'" onmouseout="this.style.color='#e2e8f0';this.style.borderColor='rgba(255,255,255,0.22)';this.style.background='rgba(0,0,0,0.72)'">Next &#8594;</a></div>
 
     <div class="container">
-        <h1>🔬 How Prostate Cancer Spreads</h1>
-        <p class="subtitle">Match each route or feature of spread to its typical target and its clinical clue</p>
+        <h1>🩺 FGM, Virginity Testing, and Related Procedures</h1>
+        <p class="subtitle">Match each practice or procedure to its description and key clinical point</p>
         <div class="stats-controls">
             <div class="stats">
                 <div class="stat-item"><span class="stat-label">Score:</span><span id="score">0</span>/<span id="total">0</span></div>
@@ -139,11 +139,11 @@
             <div class="word-bank-container">
                 <div class="word-bank-title">&#x1F4DA; Word Bank</div>
                 <div class="tabs">
-                    <button class="tab active" onclick="switchTab('typical_site_or_target', this)">Typical site or target</button>
-                    <button class="tab" onclick="switchTab('clinical_clue', this)">Clinical clue</button>
+                    <button class="tab active" onclick="switchTab('description', this)">Description</button>
+                    <button class="tab" onclick="switchTab('key_clinical_point', this)">Key clinical point</button>
                 </div>
-                <div id="typical_site_or_target-bank" class="word-bank active"></div>
-                <div id="clinical_clue-bank" class="word-bank"></div>
+                <div id="description-bank" class="word-bank active"></div>
+                <div id="key_clinical_point-bank" class="word-bank"></div>
             </div>
             <div class="cards-container" id="cards-container"></div>
         </div>
@@ -158,25 +158,29 @@
         </div>
     </div>
     <script>
-        const categoryKeys = ["typical_site_or_target", "clinical_clue"];
-        const categoryLabels = {"typical_site_or_target": "Typical site or target", "clinical_clue": "Clinical clue"};
+        const categoryKeys = ["description", "key_clinical_point"];
+        const categoryLabels = {"description": "Description", "key_clinical_point": "Key clinical point"};
 
         const gameData = {
-            "Local extension": {
-                "typical_site_or_target": "Prostatic urethra and adjacent pelvic tissue",
-                "clinical_clue": "Urethral stenosis progressing to retention and renal failure"
+            "Female genital mutilation/cutting": {
+                "description": "Removal or injury of external genitalia for non-medical reasons",
+                "key_clinical_point": "No known health benefit; short- and long-term harms"
             },
-            "Lymphatic dissemination": {
-                "typical_site_or_target": "Regional pelvic nodes, usually internal iliac",
-                "clinical_clue": "Nodal involvement found during staging, the N of TNM"
+            "Deinfibulation": {
+                "description": "Surgical opening of a Type III infibulated vaginal opening",
+                "key_clinical_point": "May facilitate intercourse, gynecologic care, or childbirth"
             },
-            "Hematogenous spread": {
-                "typical_site_or_target": "Lumbar spine, proximal femur, pelvis, thoracic spine, ribs",
-                "clinical_clue": "Back pain from osteoblastic vertebral metastases"
+            "Reinfibulation": {
+                "description": "Re-closure of the vaginal opening after childbirth",
+                "key_clinical_point": "Can lead to repeated procedures over a lifetime"
             },
-            "Perineural invasion": {
-                "typical_site_or_target": "Nerves in and around the prostate gland",
-                "clinical_clue": "Characteristic pathologic feature that promotes local tumor extension"
+            "Virginity testing": {
+                "description": "Genital inspection to assess prior sexual activity",
+                "key_clinical_point": "Not recommended by WHO; hymen findings unreliable"
+            },
+            "Elective adult genital procedures": {
+                "description": "Requested by informed adults to alter normal anatomy",
+                "key_clinical_point": "Evaluated separately from FGM and reconstruction"
             }
         };
 
@@ -351,7 +355,7 @@
                 const correctItem = Array.from(document.querySelectorAll('.draggable-item')).find(i =>
                     i.dataset.entity === entity && i.dataset.category === cat);
                 if (correctItem) {
-                    correctItem.style.outline = "2px solid #06b6d4";
+                    correctItem.style.outline = "2px solid #f97316";
                     correctItem.style.animation = 'correctPulse 1s ease 3';
                     correctItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     setTimeout(() => { correctItem.style.animation = ''; correctItem.style.outline = ''; }, 3000);

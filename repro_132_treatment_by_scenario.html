@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How Prostate Cancer Spreads - Drag &amp; Drop Study Game</title>
+    <title>Treatment by Scenario - Drag &amp; Drop Study Game</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -118,11 +118,11 @@
 </head>
 <body>
 <a href="repro_index.html" style="position:fixed;top:12px;left:12px;z-index:9999;background:rgba(0,0,0,0.55);color:#94a3b8;border:1px solid rgba(255,255,255,0.13);border-radius:20px;padding:5px 13px;font-size:.72rem;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(8px);transition:.15s;letter-spacing:.3px;" onmouseover="this.style.color='#f1f5f9';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='#94a3b8';this.style.borderColor='rgba(255,255,255,0.13)'">&#8592; Index</a>
-<div style="position:fixed;top:12px;right:12px;z-index:9999;display:flex;gap:8px;"><a href="repro_115_management_strategies.html" style="background:rgba(0,0,0,0.72);color:#e2e8f0;border:1px solid rgba(255,255,255,0.22);border-radius:22px;padding:8px 18px;font-size:.85rem;font-weight:600;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(10px);transition:.15s;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='rgba(0,0,0,0.88)'" onmouseout="this.style.color='#e2e8f0';this.style.borderColor='rgba(255,255,255,0.22)';this.style.background='rgba(0,0,0,0.72)'">&#8592; Prev</a><a href="repro_117_vaginal_ph_and_flora.html" style="background:rgba(0,0,0,0.72);color:#e2e8f0;border:1px solid rgba(255,255,255,0.22);border-radius:22px;padding:8px 18px;font-size:.85rem;font-weight:600;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(10px);transition:.15s;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='rgba(0,0,0,0.88)'" onmouseout="this.style.color='#e2e8f0';this.style.borderColor='rgba(255,255,255,0.22)';this.style.background='rgba(0,0,0,0.72)'">Next &#8594;</a></div>
+<div style="position:fixed;top:12px;right:12px;z-index:9999;display:flex;gap:8px;"><a href="repro_131_virulence_and_pathogenesis.html" style="background:rgba(0,0,0,0.72);color:#e2e8f0;border:1px solid rgba(255,255,255,0.22);border-radius:22px;padding:8px 18px;font-size:.85rem;font-weight:600;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(10px);transition:.15s;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='rgba(0,0,0,0.88)'" onmouseout="this.style.color='#e2e8f0';this.style.borderColor='rgba(255,255,255,0.22)';this.style.background='rgba(0,0,0,0.72)'">&#8592; Prev</a><a href="repro_133_arv_drug_classes.html" style="background:rgba(0,0,0,0.72);color:#e2e8f0;border:1px solid rgba(255,255,255,0.22);border-radius:22px;padding:8px 18px;font-size:.85rem;font-weight:600;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(10px);transition:.15s;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='rgba(0,0,0,0.88)'" onmouseout="this.style.color='#e2e8f0';this.style.borderColor='rgba(255,255,255,0.22)';this.style.background='rgba(0,0,0,0.72)'">Next &#8594;</a></div>
 
     <div class="container">
-        <h1>🔬 How Prostate Cancer Spreads</h1>
-        <p class="subtitle">Match each route or feature of spread to its typical target and its clinical clue</p>
+        <h1>🔬 Treatment by Scenario</h1>
+        <p class="subtitle">Match each clinical scenario to its regimen and rationale</p>
         <div class="stats-controls">
             <div class="stats">
                 <div class="stat-item"><span class="stat-label">Score:</span><span id="score">0</span>/<span id="total">0</span></div>
@@ -139,11 +139,11 @@
             <div class="word-bank-container">
                 <div class="word-bank-title">&#x1F4DA; Word Bank</div>
                 <div class="tabs">
-                    <button class="tab active" onclick="switchTab('typical_site_or_target', this)">Typical site or target</button>
-                    <button class="tab" onclick="switchTab('clinical_clue', this)">Clinical clue</button>
+                    <button class="tab active" onclick="switchTab('regimen', this)">Regimen</button>
+                    <button class="tab" onclick="switchTab('rationale', this)">Rationale</button>
                 </div>
-                <div id="typical_site_or_target-bank" class="word-bank active"></div>
-                <div id="clinical_clue-bank" class="word-bank"></div>
+                <div id="regimen-bank" class="word-bank active"></div>
+                <div id="rationale-bank" class="word-bank"></div>
             </div>
             <div class="cards-container" id="cards-container"></div>
         </div>
@@ -158,25 +158,33 @@
         </div>
     </div>
     <script>
-        const categoryKeys = ["typical_site_or_target", "clinical_clue"];
-        const categoryLabels = {"typical_site_or_target": "Typical site or target", "clinical_clue": "Clinical clue"};
+        const categoryKeys = ["regimen", "rationale"];
+        const categoryLabels = {"regimen": "Regimen", "rationale": "Rationale"};
 
         const gameData = {
-            "Local extension": {
-                "typical_site_or_target": "Prostatic urethra and adjacent pelvic tissue",
-                "clinical_clue": "Urethral stenosis progressing to retention and renal failure"
+            "Uncomplicated gonorrhea, nonpregnant adult": {
+                "regimen": "Single IM ceftriaxone + doxycycline for 7 days",
+                "rationale": "Doxycycline covers chlamydia if not excluded"
             },
-            "Lymphatic dissemination": {
-                "typical_site_or_target": "Regional pelvic nodes, usually internal iliac",
-                "clinical_clue": "Nodal involvement found during staging, the N of TNM"
+            "Gonorrhea in pregnancy": {
+                "regimen": "Ceftriaxone + azithromycin for chlamydial coverage",
+                "rationale": "Doxycycline is generally avoided in pregnancy"
             },
-            "Hematogenous spread": {
-                "typical_site_or_target": "Lumbar spine, proximal femur, pelvis, thoracic spine, ribs",
-                "clinical_clue": "Back pain from osteoblastic vertebral metastases"
+            "PID in pregnancy": {
+                "regimen": "Hospitalize and give parenteral antibiotics",
+                "rationale": "Reduces maternal and fetal complications"
             },
-            "Perineural invasion": {
-                "typical_site_or_target": "Nerves in and around the prostate gland",
-                "clinical_clue": "Characteristic pathologic feature that promotes local tumor extension"
+            "Every newborn": {
+                "regimen": "Ocular erythromycin ointment shortly after birth",
+                "rationale": "Prevents gonococcal ophthalmia neonatorum"
+            },
+            "Established gonococcal ophthalmia neonatorum": {
+                "regimen": "Ceftriaxone; evaluate for disseminated infection",
+                "rationale": "Erythromycin prophylaxis is no longer sufficient"
+            },
+            "Severe cephalosporin allergy": {
+                "regimen": "Gentamicin plus azithromycin",
+                "rationale": "Alternative when ceftriaxone cannot be used"
             }
         };
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How Prostate Cancer Spreads - Drag &amp; Drop Study Game</title>
+    <title>Herpes and Wart Presentations - Drag &amp; Drop Study Game</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -118,11 +118,11 @@
 </head>
 <body>
 <a href="repro_index.html" style="position:fixed;top:12px;left:12px;z-index:9999;background:rgba(0,0,0,0.55);color:#94a3b8;border:1px solid rgba(255,255,255,0.13);border-radius:20px;padding:5px 13px;font-size:.72rem;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(8px);transition:.15s;letter-spacing:.3px;" onmouseover="this.style.color='#f1f5f9';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='#94a3b8';this.style.borderColor='rgba(255,255,255,0.13)'">&#8592; Index</a>
-<div style="position:fixed;top:12px;right:12px;z-index:9999;display:flex;gap:8px;"><a href="repro_115_management_strategies.html" style="background:rgba(0,0,0,0.72);color:#e2e8f0;border:1px solid rgba(255,255,255,0.22);border-radius:22px;padding:8px 18px;font-size:.85rem;font-weight:600;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(10px);transition:.15s;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='rgba(0,0,0,0.88)'" onmouseout="this.style.color='#e2e8f0';this.style.borderColor='rgba(255,255,255,0.22)';this.style.background='rgba(0,0,0,0.72)'">&#8592; Prev</a><a href="repro_117_vaginal_ph_and_flora.html" style="background:rgba(0,0,0,0.72);color:#e2e8f0;border:1px solid rgba(255,255,255,0.22);border-radius:22px;padding:8px 18px;font-size:.85rem;font-weight:600;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(10px);transition:.15s;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='rgba(0,0,0,0.88)'" onmouseout="this.style.color='#e2e8f0';this.style.borderColor='rgba(255,255,255,0.22)';this.style.background='rgba(0,0,0,0.72)'">Next &#8594;</a></div>
+<div style="position:fixed;top:12px;right:12px;z-index:9999;display:flex;gap:8px;"><a href="repro_139_hsv_hpv_therapy.html" style="background:rgba(0,0,0,0.72);color:#e2e8f0;border:1px solid rgba(255,255,255,0.22);border-radius:22px;padding:8px 18px;font-size:.85rem;font-weight:600;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(10px);transition:.15s;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='rgba(0,0,0,0.88)'" onmouseout="this.style.color='#e2e8f0';this.style.borderColor='rgba(255,255,255,0.22)';this.style.background='rgba(0,0,0,0.72)'">&#8592; Prev</a><a href="repro_141_syphilis_stages.html" style="background:rgba(0,0,0,0.72);color:#e2e8f0;border:1px solid rgba(255,255,255,0.22);border-radius:22px;padding:8px 18px;font-size:.85rem;font-weight:600;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(10px);transition:.15s;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='rgba(0,0,0,0.88)'" onmouseout="this.style.color='#e2e8f0';this.style.borderColor='rgba(255,255,255,0.22)';this.style.background='rgba(0,0,0,0.72)'">Next &#8594;</a></div>
 
     <div class="container">
-        <h1>🔬 How Prostate Cancer Spreads</h1>
-        <p class="subtitle">Match each route or feature of spread to its typical target and its clinical clue</p>
+        <h1>🔬 Herpes and Wart Presentations</h1>
+        <p class="subtitle">Match each presentation to its causative type(s), clinical features, and management note</p>
         <div class="stats-controls">
             <div class="stats">
                 <div class="stat-item"><span class="stat-label">Score:</span><span id="score">0</span>/<span id="total">0</span></div>
@@ -139,11 +139,13 @@
             <div class="word-bank-container">
                 <div class="word-bank-title">&#x1F4DA; Word Bank</div>
                 <div class="tabs">
-                    <button class="tab active" onclick="switchTab('typical_site_or_target', this)">Typical site or target</button>
-                    <button class="tab" onclick="switchTab('clinical_clue', this)">Clinical clue</button>
+                    <button class="tab active" onclick="switchTab('causative_type_s', this)">Causative type(s)</button>
+                    <button class="tab" onclick="switchTab('clinical_features', this)">Clinical features</button>
+                    <button class="tab" onclick="switchTab('management_or_prevention_note', this)">Management or prevention note</button>
                 </div>
-                <div id="typical_site_or_target-bank" class="word-bank active"></div>
-                <div id="clinical_clue-bank" class="word-bank"></div>
+                <div id="causative_type_s-bank" class="word-bank active"></div>
+                <div id="clinical_features-bank" class="word-bank"></div>
+                <div id="management_or_prevention_note-bank" class="word-bank"></div>
             </div>
             <div class="cards-container" id="cards-container"></div>
         </div>
@@ -158,25 +160,39 @@
         </div>
     </div>
     <script>
-        const categoryKeys = ["typical_site_or_target", "clinical_clue"];
-        const categoryLabels = {"typical_site_or_target": "Typical site or target", "clinical_clue": "Clinical clue"};
+        const categoryKeys = ["causative_type_s", "clinical_features", "management_or_prevention_note"];
+        const categoryLabels = {"causative_type_s": "Causative type(s)", "clinical_features": "Clinical features", "management_or_prevention_note": "Management or prevention note"};
 
         const gameData = {
-            "Local extension": {
-                "typical_site_or_target": "Prostatic urethra and adjacent pelvic tissue",
-                "clinical_clue": "Urethral stenosis progressing to retention and renal failure"
+            "Oral herpes": {
+                "causative_type_s": "Mostly HSV-1",
+                "clinical_features": "Recurrent cold sores on lips, oral mucosa, or face",
+                "management_or_prevention_note": "Can spread to the genitals through oral sex"
             },
-            "Lymphatic dissemination": {
-                "typical_site_or_target": "Regional pelvic nodes, usually internal iliac",
-                "clinical_clue": "Nodal involvement found during staging, the N of TNM"
+            "Primary genital herpes": {
+                "causative_type_s": "Mostly HSV-2, though HSV-1 also causes it",
+                "clinical_features": "Pain, itching, dysuria, discharge, fever; worse than recurrences",
+                "management_or_prevention_note": "Confirm by lesion NAAT; treat with valacyclovir"
             },
-            "Hematogenous spread": {
-                "typical_site_or_target": "Lumbar spine, proximal femur, pelvis, thoracic spine, ribs",
-                "clinical_clue": "Back pain from osteoblastic vertebral metastases"
+            "Neonatal herpes": {
+                "causative_type_s": "Maternal genital HSV during vaginal delivery or transplacental",
+                "clinical_features": "Eye infection; neurologic, lung, liver, and kidney disease",
+                "management_or_prevention_note": "C-section if active lesions; antivirals before delivery"
             },
-            "Perineural invasion": {
-                "typical_site_or_target": "Nerves in and around the prostate gland",
-                "clinical_clue": "Characteristic pathologic feature that promotes local tumor extension"
+            "Cutaneous warts": {
+                "causative_type_s": "HPV-1, HPV-2, and HPV-4",
+                "clinical_features": "Common, plantar, and flat warts",
+                "management_or_prevention_note": "Spread by skin contact; autoinoculation is possible"
+            },
+            "Anogenital warts": {
+                "causative_type_s": "HPV-6 and HPV-11",
+                "clinical_features": "Condyloma acuminatum; painless verrucous genital or rectal lesions",
+                "management_or_prevention_note": "Topical agents; surgery, laser, or cautery if recalcitrant"
+            },
+            "Oncogenic HPV disease": {
+                "causative_type_s": "HPV-16 and HPV-18",
+                "clinical_features": "Cervical, penile, anal, and head and neck cancer",
+                "management_or_prevention_note": "Prevented by vaccination and cervical screening"
             }
         };
 

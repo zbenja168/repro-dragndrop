@@ -36,6 +36,8 @@ ENDO_IDENTITY = "#ec4899"  # pink for index/header
 WEEKS = [
     ("Week 1", "Anatomy, Development, Hormones & Cycles", range(1, 15)),
     ("Week 2", "Repro Health, Female & Male Pathology", range(15, 30)),
+    ("Week 3", "Infections, STIs & Cervical/Vulvar Pathology", range(30, 39)),
+    ("Week 4", "Pregnancy, Complications & Reproductive Rights", range(39, 50)),
 ]
 
 
@@ -54,7 +56,7 @@ ICONS = ["🩸", "🧬", "⚗️", "🔬", "🧪", "💊", "🩺", "⚡"]
 def load_bricks():
     """Import all brick_NN.py files in number order, then the cross-brick synthesis at the end."""
     bricks = []
-    for i in range(1, 30):
+    for i in range(1, 50):
         path = os.path.join(DATA_DIR, f"brick_{i:02d}.py")
         if not os.path.exists(path):
             print(f"  WARNING: missing {path}")
