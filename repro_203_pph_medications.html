@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Populations Facing SRHR Barriers - Drag &amp; Drop Study Game</title>
+    <title>Medications for Postpartum Hemorrhage - Drag &amp; Drop Study Game</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -118,11 +118,11 @@
 </head>
 <body>
 <a href="repro_index.html" style="position:fixed;top:12px;left:12px;z-index:9999;background:rgba(0,0,0,0.55);color:#94a3b8;border:1px solid rgba(255,255,255,0.13);border-radius:20px;padding:5px 13px;font-size:.72rem;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(8px);transition:.15s;letter-spacing:.3px;" onmouseover="this.style.color='#f1f5f9';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='#94a3b8';this.style.borderColor='rgba(255,255,255,0.13)'">&#8592; Index</a>
-<div style="position:fixed;top:12px;right:12px;z-index:9999;display:flex;gap:8px;"><a href="repro_194_us_legal_milestones.html" style="background:rgba(0,0,0,0.72);color:#e2e8f0;border:1px solid rgba(255,255,255,0.22);border-radius:22px;padding:8px 18px;font-size:.85rem;font-weight:600;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(10px);transition:.15s;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='rgba(0,0,0,0.88)'" onmouseout="this.style.color='#e2e8f0';this.style.borderColor='rgba(255,255,255,0.22)';this.style.background='rgba(0,0,0,0.72)'">&#8592; Prev</a><a href="repro_196_stages_of_labor.html" style="background:rgba(0,0,0,0.72);color:#e2e8f0;border:1px solid rgba(255,255,255,0.22);border-radius:22px;padding:8px 18px;font-size:.85rem;font-weight:600;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(10px);transition:.15s;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='rgba(0,0,0,0.88)'" onmouseout="this.style.color='#e2e8f0';this.style.borderColor='rgba(255,255,255,0.22)';this.style.background='rgba(0,0,0,0.72)'">Next &#8594;</a></div>
+<div style="position:fixed;top:12px;right:12px;z-index:9999;display:flex;gap:8px;"><a href="repro_202_labor_delivery_emergencies.html" style="background:rgba(0,0,0,0.72);color:#e2e8f0;border:1px solid rgba(255,255,255,0.22);border-radius:22px;padding:8px 18px;font-size:.85rem;font-weight:600;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(10px);transition:.15s;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='rgba(0,0,0,0.88)'" onmouseout="this.style.color='#e2e8f0';this.style.borderColor='rgba(255,255,255,0.22)';this.style.background='rgba(0,0,0,0.72)'">&#8592; Prev</a><a href="repro_204_birth_settings.html" style="background:rgba(0,0,0,0.72);color:#e2e8f0;border:1px solid rgba(255,255,255,0.22);border-radius:22px;padding:8px 18px;font-size:.85rem;font-weight:600;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(10px);transition:.15s;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='rgba(0,0,0,0.88)'" onmouseout="this.style.color='#e2e8f0';this.style.borderColor='rgba(255,255,255,0.22)';this.style.background='rgba(0,0,0,0.72)'">Next &#8594;</a></div>
 
     <div class="container">
-        <h1>⚗️ Populations Facing SRHR Barriers</h1>
-        <p class="subtitle">Match each population to its key risk or barrier and a supporting detail</p>
+        <h1>⚗️ Medications for Postpartum Hemorrhage</h1>
+        <p class="subtitle">Match each drug to its action, place in therapy, and key caution</p>
         <div class="stats-controls">
             <div class="stats">
                 <div class="stat-item"><span class="stat-label">Score:</span><span id="score">0</span>/<span id="total">0</span></div>
@@ -139,11 +139,13 @@
             <div class="word-bank-container">
                 <div class="word-bank-title">&#x1F4DA; Word Bank</div>
                 <div class="tabs">
-                    <button class="tab active" onclick="switchTab('key_risk_or_barrier', this)">Key risk or barrier</button>
-                    <button class="tab" onclick="switchTab('supporting_detail', this)">Supporting detail</button>
+                    <button class="tab active" onclick="switchTab('action', this)">Action</button>
+                    <button class="tab" onclick="switchTab('place_in_therapy', this)">Place in therapy</button>
+                    <button class="tab" onclick="switchTab('caution_or_limit', this)">Caution or limit</button>
                 </div>
-                <div id="key_risk_or_barrier-bank" class="word-bank active"></div>
-                <div id="supporting_detail-bank" class="word-bank"></div>
+                <div id="action-bank" class="word-bank active"></div>
+                <div id="place_in_therapy-bank" class="word-bank"></div>
+                <div id="caution_or_limit-bank" class="word-bank"></div>
             </div>
             <div class="cards-container" id="cards-container"></div>
         </div>
@@ -158,25 +160,29 @@
         </div>
     </div>
     <script>
-        const categoryKeys = ["key_risk_or_barrier", "supporting_detail"];
-        const categoryLabels = {"key_risk_or_barrier": "Key risk or barrier", "supporting_detail": "Supporting detail"};
+        const categoryKeys = ["action", "place_in_therapy", "caution_or_limit"];
+        const categoryLabels = {"action": "Action", "place_in_therapy": "Place in therapy", "caution_or_limit": "Caution or limit"};
 
         const gameData = {
-            "Adolescents": {
-                "key_risk_or_barrier": "Pregnancy raises risk of eclampsia, endometritis, systemic infection",
-                "supporting_detail": "61% of reported chlamydia cases in Europe"
+            "Oxytocin (Pitocin)": {
+                "action": "Stimulates uterine contraction",
+                "place_in_therapy": "First-line uterotonic, given right after fetal delivery",
+                "caution_or_limit": "Ideal timing in the third stage not established"
             },
-            "LGBTQIA+ individuals": {
-                "key_risk_or_barrier": "Fear of stigma or legal consequences limits disclosure",
-                "supporting_detail": "Needs include fertility options and hormone therapy"
+            "Misoprostol (Cytotec)": {
+                "action": "Prostaglandin analog that contracts the uterus",
+                "place_in_therapy": "Second-line uterotonic, less effective than oxytocin",
+                "caution_or_limit": "Nausea, diarrhea, and fever within three hours"
             },
-            "Displaced people and refugees": {
-                "key_risk_or_barrier": "Sexual exploitation, trafficking, and sexual violence",
-                "supporting_detail": "Disrupted services reduce access to contraception"
+            "Methergine": {
+                "action": "Additional uterotonic that promotes contraction",
+                "place_in_therapy": "Further option for persistent uterine atony",
+                "caution_or_limit": "Avoid in a hypertensive patient"
             },
-            "Nonbinary and gender-nonconforming people": {
-                "key_risk_or_barrier": "Binary administrative systems and documentation impede access",
-                "supporting_detail": "Report delayed care and inexperienced providers"
+            "Tranexamic acid (TXA)": {
+                "action": "Antifibrinolytic that stabilizes developing clots",
+                "place_in_therapy": "Adjunct in hospital PPH protocols, not a uterotonic",
+                "caution_or_limit": "Give as soon as possible, within 3 hours of birth"
             }
         };
 

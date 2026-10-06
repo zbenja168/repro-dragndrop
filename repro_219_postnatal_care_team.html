@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Populations Facing SRHR Barriers - Drag &amp; Drop Study Game</title>
+    <title>The Postnatal Care Team - Drag &amp; Drop Study Game</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -118,11 +118,11 @@
 </head>
 <body>
 <a href="repro_index.html" style="position:fixed;top:12px;left:12px;z-index:9999;background:rgba(0,0,0,0.55);color:#94a3b8;border:1px solid rgba(255,255,255,0.13);border-radius:20px;padding:5px 13px;font-size:.72rem;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(8px);transition:.15s;letter-spacing:.3px;" onmouseover="this.style.color='#f1f5f9';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='#94a3b8';this.style.borderColor='rgba(255,255,255,0.13)'">&#8592; Index</a>
-<div style="position:fixed;top:12px;right:12px;z-index:9999;display:flex;gap:8px;"><a href="repro_194_us_legal_milestones.html" style="background:rgba(0,0,0,0.72);color:#e2e8f0;border:1px solid rgba(255,255,255,0.22);border-radius:22px;padding:8px 18px;font-size:.85rem;font-weight:600;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(10px);transition:.15s;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='rgba(0,0,0,0.88)'" onmouseout="this.style.color='#e2e8f0';this.style.borderColor='rgba(255,255,255,0.22)';this.style.background='rgba(0,0,0,0.72)'">&#8592; Prev</a><a href="repro_196_stages_of_labor.html" style="background:rgba(0,0,0,0.72);color:#e2e8f0;border:1px solid rgba(255,255,255,0.22);border-radius:22px;padding:8px 18px;font-size:.85rem;font-weight:600;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(10px);transition:.15s;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='rgba(0,0,0,0.88)'" onmouseout="this.style.color='#e2e8f0';this.style.borderColor='rgba(255,255,255,0.22)';this.style.background='rgba(0,0,0,0.72)'">Next &#8594;</a></div>
+<div style="position:fixed;top:12px;right:12px;z-index:9999;display:flex;gap:8px;"><a href="repro_218_safe_sleep_checklist.html" style="background:rgba(0,0,0,0.72);color:#e2e8f0;border:1px solid rgba(255,255,255,0.22);border-radius:22px;padding:8px 18px;font-size:.85rem;font-weight:600;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(10px);transition:.15s;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='rgba(0,0,0,0.88)'" onmouseout="this.style.color='#e2e8f0';this.style.borderColor='rgba(255,255,255,0.22)';this.style.background='rgba(0,0,0,0.72)'">&#8592; Prev</a><a href="repro_220_lactation_timeline.html" style="background:rgba(0,0,0,0.72);color:#e2e8f0;border:1px solid rgba(255,255,255,0.22);border-radius:22px;padding:8px 18px;font-size:.85rem;font-weight:600;text-decoration:none;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(10px);transition:.15s;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='rgba(0,0,0,0.88)'" onmouseout="this.style.color='#e2e8f0';this.style.borderColor='rgba(255,255,255,0.22)';this.style.background='rgba(0,0,0,0.72)'">Next &#8594;</a></div>
 
     <div class="container">
-        <h1>⚗️ Populations Facing SRHR Barriers</h1>
-        <p class="subtitle">Match each population to its key risk or barrier and a supporting detail</p>
+        <h1>⚗️ The Postnatal Care Team</h1>
+        <p class="subtitle">Match each professional to their core role and a typical task</p>
         <div class="stats-controls">
             <div class="stats">
                 <div class="stat-item"><span class="stat-label">Score:</span><span id="score">0</span>/<span id="total">0</span></div>
@@ -139,11 +139,11 @@
             <div class="word-bank-container">
                 <div class="word-bank-title">&#x1F4DA; Word Bank</div>
                 <div class="tabs">
-                    <button class="tab active" onclick="switchTab('key_risk_or_barrier', this)">Key risk or barrier</button>
-                    <button class="tab" onclick="switchTab('supporting_detail', this)">Supporting detail</button>
+                    <button class="tab active" onclick="switchTab('core_role', this)">Core role</button>
+                    <button class="tab" onclick="switchTab('typical_task', this)">Typical task</button>
                 </div>
-                <div id="key_risk_or_barrier-bank" class="word-bank active"></div>
-                <div id="supporting_detail-bank" class="word-bank"></div>
+                <div id="core_role-bank" class="word-bank active"></div>
+                <div id="typical_task-bank" class="word-bank"></div>
             </div>
             <div class="cards-container" id="cards-container"></div>
         </div>
@@ -158,25 +158,33 @@
         </div>
     </div>
     <script>
-        const categoryKeys = ["key_risk_or_barrier", "supporting_detail"];
-        const categoryLabels = {"key_risk_or_barrier": "Key risk or barrier", "supporting_detail": "Supporting detail"};
+        const categoryKeys = ["core_role", "typical_task"];
+        const categoryLabels = {"core_role": "Core role", "typical_task": "Typical task"};
 
         const gameData = {
-            "Adolescents": {
-                "key_risk_or_barrier": "Pregnancy raises risk of eclampsia, endometritis, systemic infection",
-                "supporting_detail": "61% of reported chlamydia cases in Europe"
+            "Obstetricians/Gynecologists": {
+                "core_role": "Management of birth parent complications",
+                "typical_task": "Surgical interventions and specialized gynecological care"
             },
-            "LGBTQIA+ individuals": {
-                "key_risk_or_barrier": "Fear of stigma or legal consequences limits disclosure",
-                "supporting_detail": "Needs include fertility options and hormone therapy"
+            "Midwives": {
+                "core_role": "Comprehensive postnatal assessments and uncomplicated care",
+                "typical_task": "Breastfeeding support and education; supervise community health workers"
             },
-            "Displaced people and refugees": {
-                "key_risk_or_barrier": "Sexual exploitation, trafficking, and sexual violence",
-                "supporting_detail": "Disrupted services reduce access to contraception"
+            "Pediatricians/Neonatologists": {
+                "core_role": "Newborn examinations and growth monitoring",
+                "typical_task": "Management of neonatal complications"
             },
-            "Nonbinary and gender-nonconforming people": {
-                "key_risk_or_barrier": "Binary administrative systems and documentation impede access",
-                "supporting_detail": "Report delayed care and inexperienced providers"
+            "Nurses": {
+                "core_role": "Vital signs monitoring and medication administration",
+                "typical_task": "Wound care and hands-on breastfeeding assistance"
+            },
+            "Lactation consultants": {
+                "core_role": "Specialized breastfeeding support",
+                "typical_task": "Management of complex lactation challenges"
+            },
+            "Community health workers": {
+                "core_role": "Home visits with basic assessments and education",
+                "typical_task": "Cultural bridging and linkage to community resources"
             }
         };
 
