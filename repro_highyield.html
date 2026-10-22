@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReproStudy &ndash; Highest Yield Drag &amp; Drops</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#0d0811;--plum:#2a1630;--gold:#f5c451;--gold2:#d99a1e;--rose:#f472b6;--cream:#fbf5e8;--cream2:#f1e6cc;--tan:#c9b48a;--text:#efe7f3;--muted:#b4a6bd;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{color:var(--text);font-family:'Inter','Segoe UI',system-ui,sans-serif;min-height:100vh;
+       background:radial-gradient(1100px 600px at 50% -10%,rgba(245,196,81,.14),transparent 60%),radial-gradient(900px 700px at 100% 100%,rgba(244,114,182,.10),transparent 60%),linear-gradient(180deg,#120a17,var(--ink));background-attachment:fixed;}
+  header{padding:56px 24px 30px;text-align:center;}
+  .eyebrow{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:999px;padding:7px 14px;margin-bottom:18px;box-shadow:0 4px 18px rgba(245,196,81,.25);}
+  header h1{font-family:'Fraunces',Georgia,serif;font-size:3rem;font-weight:800;letter-spacing:-.02em;line-height:1.05;background:linear-gradient(135deg,#fff7e6 20%,var(--gold) 65%,var(--rose));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+  header p{color:var(--muted);font-size:1rem;font-style:italic;max-width:600px;margin:0 auto;line-height:1.6;}
+  .pills{display:flex;gap:10px;justify-content:center;margin-top:22px;flex-wrap:wrap;}
+  .pill{background:rgba(245,196,81,.07);border:1px solid rgba(245,196,81,.3);border-radius:999px;padding:6px 15px;font-size:.8rem;color:var(--muted);text-decoration:none;}
+  .pill b{color:var(--gold);}
+  a.pill:hover{border-color:var(--gold);color:var(--text);}
+  main{max-width:1040px;margin:0 auto;padding:18px 16px 72px;display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:18px;}
+  @media (max-width:520px){main{grid-template-columns:1fr;} header h1{font-size:2.2rem;}}
+  a.hy{position:relative;display:flex;gap:16px;align-items:flex-start;text-decoration:none;color:#2a1d12;border-radius:14px;padding:20px 20px 18px;
+        background:var(--cream);background-image:repeating-linear-gradient(180deg,transparent 0 27px,rgba(160,130,80,.13) 27px 28px);
+        border:1px solid var(--cream2);box-shadow:0 14px 34px rgba(0,0,0,.45);transition:transform .15s,box-shadow .15s;}
+  a.hy::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:4px;border-radius:0 4px 4px 0;background:var(--c);}
+  a.hy:hover{transform:translateY(-3px) rotate(-.3deg);box-shadow:0 20px 44px rgba(0,0,0,.55),0 0 0 2px var(--gold);}
+  .hy-num{flex:none;font-family:'Fraunces',Georgia,serif;font-size:2rem;font-weight:800;line-height:1;color:var(--gold2);min-width:2.2ch;}
+  .hy-body{display:flex;flex-direction:column;gap:5px;min-width:0;}
+  .hy-title{font-family:'Fraunces',Georgia,serif;font-size:1.15rem;font-weight:800;line-height:1.25;}
+  .hy-sub{font-size:.8rem;color:#6b5a44;}
+  .chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px;}
+  .chip{font-size:.66rem;color:#6b4a14;background:var(--cream2);border:1px solid var(--tan);border-radius:999px;padding:2px 8px;}
+</style>
+<script defer src="https://activetransport.app/static/tool-track.js"></script>
+</head>
+<body>
+<header>
+  <span class="eyebrow">&#9733; Highest Yield</span>
+  <h1>Highest Yield Drag &amp; Drops</h1>
+  <p>12 games that pack the most-tested facts from across the Reproductive Systems course into one review set, built for the last pass before the exam.</p>
+  <div class="pills">
+    <span class="pill"><b>12</b> games</span>
+    <span class="pill"><b>107</b> high-yield rows</span>
+    <span class="pill"><b>43</b> lectures drawn on</span>
+    <a class="pill" href="repro_index.html">All 61 lectures&rsquo; games &rarr;</a>
+  </div>
+</header>
+<main>
+  <a class="hy" href="repro_hy_01_congenital_defects.html" style="--c:#f59e0b">
+    <span class="hy-num">01</span>
+    <span class="hy-body">
+      <span class="hy-title">Classic Congenital Reproductive Defects</span>
+      <span class="hy-sub">Match each defect to its embryologic error, classic finding, and key association or management &middot; 9 rows</span>
+      <span class="chips"><span class="chip">Sex Determination and Reproductive Systems Development</span><span class="chip">Congenital Disorders of the Reproductive Systems</span><span class="chip">Benign Testicular Disorders</span></span>
+    </span>
+  </a>
+  <a class="hy" href="repro_hy_02_hpg_hormones.html" style="--c:#10b981">
+    <span class="hy-num">02</span>
+    <span class="hy-body">
+      <span class="hy-title">Hormones of the HPG Axis: Source, Action, Pearl</span>
+      <span class="hy-sub">Match each hormone to its source, key action, and regulation or clinical pearl &middot; 9 rows</span>
+      <span class="chips"><span class="chip">Sex Determination and Reproductive Systems Development</span><span class="chip">Estrogen and Progesterone</span><span class="chip">Androgens</span><span class="chip">Ovulation and the Menstrual Cycle</span><span class="chip">Puberty and Hormonal Regulation</span><span class="chip">Family Planning, Preconception Care and Infertility</span><span class="chip">Disorders of Sex Hormones</span></span>
+    </span>
+  </a>
+  <a class="hy" href="repro_hy_03_amenorrhea_dsd_labs.html" style="--c:#8b5cf6">
+    <span class="hy-num">03</span>
+    <span class="hy-body">
+      <span class="hy-title">Amenorrhea and DSD: Read the Labs</span>
+      <span class="hy-sub">Match each disorder to its defect or mechanism, key labs, and distinguishing clue &middot; 9 rows</span>
+      <span class="chips"><span class="chip">Sex Determination and Reproductive Systems Development</span><span class="chip">Congenital Disorders of the Reproductive Systems</span><span class="chip">Androgens</span><span class="chip">Amenorrhea and Dysmenorrhea</span><span class="chip">Puberty and Hormonal Regulation</span><span class="chip">Disorders of Sex Hormones</span><span class="chip">Ovarian Cysts</span></span>
+    </span>
+  </a>
+  <a class="hy" href="repro_hy_04_contraception.html" style="--c:#06b6d4">
+    <span class="hy-num">04</span>
+    <span class="hy-body">
+      <span class="hy-title">Contraception: Mechanism, Risk, Pearl</span>
+      <span class="hy-sub">Match each method to how it works, its key side effect or risk, and its contraindication or pearl &middot; 9 rows</span>
+      <span class="chips"><span class="chip">Contraception</span><span class="chip">Family Planning, Preconception Care and Infertility</span></span>
+    </span>
+  </a>
+  <a class="hy" href="repro_hy_05_gonadal_uterine_tumors.html" style="--c:#ec4899">
+    <span class="hy-num">05</span>
+    <span class="hy-body">
+      <span class="hy-title">Gonadal and Uterine Tumors: Marker, Histology, Clue</span>
+      <span class="hy-sub">Match each tumor to its marker or molecular clue, histologic hallmark, and classic association &middot; 9 rows</span>
+      <span class="chips"><span class="chip">Benign Endometrial Disorders</span><span class="chip">Uterine Tumors</span><span class="chip">Ovarian Tumors (Part 1 of 2)</span><span class="chip">Ovarian Tumors (Part 2 of 2)</span><span class="chip">Testicular Tumors</span><span class="chip">Cervical Cancer</span></span>
+    </span>
+  </a>
+  <a class="hy" href="repro_hy_06_male_gu_disorders.html" style="--c:#84cc16">
+    <span class="hy-num">06</span>
+    <span class="hy-body">
+      <span class="hy-title">Male Genitourinary Disorders</span>
+      <span class="hy-sub">Match each disorder to its classic presentation, key finding or test, and management or association &middot; 9 rows</span>
+      <span class="chips"><span class="chip">Disorders of the Penis</span><span class="chip">Benign Testicular Disorders</span><span class="chip">Testicular Tumors</span><span class="chip">Benign Prostate Disorders</span><span class="chip">Prostate Cancer</span><span class="chip">Orchitis and Epididymitis</span></span>
+    </span>
+  </a>
+  <a class="hy" href="repro_hy_07_genital_infections.html" style="--c:#f97316">
+    <span class="hy-num">07</span>
+    <span class="hy-body">
+      <span class="hy-title">Genital Infections: Hallmark, Test, Treatment</span>
+      <span class="hy-sub">Match each genital infection to its hallmark finding, best diagnostic test, and first-line treatment &middot; 9 rows</span>
+      <span class="chips"><span class="chip">Vulvovaginitis</span><span class="chip">Urethritis, Cervicitis, and Pelvic Inflammatory Disease</span><span class="chip">Neisseria gonorrhoeae and Chlamydia trachomatis</span><span class="chip">Herpes Simplex and Genital Warts</span><span class="chip">Syphilis and Other Ulcerative STIs</span></span>
+    </span>
+  </a>
+  <a class="hy" href="repro_hy_08_pregnancy_hormones.html" style="--c:#3b82f6">
+    <span class="hy-num">08</span>
+    <span class="hy-body">
+      <span class="hy-title">Hormones of Pregnancy, Labor and Lactation</span>
+      <span class="hy-sub">Match each hormone to its main source, key action and high-yield clinical link &middot; 8 rows</span>
+      <span class="chips"><span class="chip">Placenta</span><span class="chip">Uncomplicated Pregnancy</span><span class="chip">Pregnancy Effects on Other Organ Systems</span><span class="chip">Gestational Diabetes</span><span class="chip">Gestational Trophoblastic Diseases</span><span class="chip">Uncomplicated Labor, Delivery, and Postpartum Care</span><span class="chip">Complications of Labor, Delivery, and Postpartum</span><span class="chip">Postnatal Care: Part 2 of 2</span></span>
+    </span>
+  </a>
+  <a class="hy" href="repro_hy_09_pregnancy_complications.html" style="--c:#f59e0b">
+    <span class="hy-num">09</span>
+    <span class="hy-body">
+      <span class="hy-title">Classic Pregnancy Complications</span>
+      <span class="hy-sub">Match each complication to its key risk factor or cause, hallmark finding and management &middot; 9 rows</span>
+      <span class="chips"><span class="chip">Pregnancy Complications</span><span class="chip">Gestational Diabetes</span><span class="chip">Hypertension in Pregnancy</span><span class="chip">Gestational Trophoblastic Diseases</span><span class="chip">Complications of Labor, Delivery, and Postpartum</span></span>
+    </span>
+  </a>
+  <a class="hy" href="repro_hy_10_torch_perinatal_infections.html" style="--c:#10b981">
+    <span class="hy-num">10</span>
+    <span class="hy-body">
+      <span class="hy-title">TORCH and Perinatal Infections</span>
+      <span class="hy-sub">Match each infection to how it is acquired, its classic newborn finding and its prevention or treatment &middot; 9 rows</span>
+      <span class="chips"><span class="chip">Uncomplicated Pregnancy</span><span class="chip">Uncomplicated Labor, Delivery, and Postpartum Care</span><span class="chip">TORCH Infections</span><span class="chip">Fetal and Postnatal Circulation</span></span>
+    </span>
+  </a>
+  <a class="hy" href="repro_hy_11_labor_delivery_emergencies.html" style="--c:#8b5cf6">
+    <span class="hy-num">11</span>
+    <span class="hy-body">
+      <span class="hy-title">Labor Tracings, Delivery Emergencies and PPH</span>
+      <span class="hy-sub">Match each tracing or emergency to its cause or risk factor, classic finding and key management &middot; 9 rows</span>
+      <span class="chips"><span class="chip">Pregnancy Complications</span><span class="chip">Gestational Diabetes</span><span class="chip">Uncomplicated Labor, Delivery, and Postpartum Care</span><span class="chip">Complications of Labor, Delivery, and Postpartum</span></span>
+    </span>
+  </a>
+  <a class="hy" href="repro_hy_12_breast_pathology.html" style="--c:#06b6d4">
+    <span class="hy-num">12</span>
+    <span class="hy-body">
+      <span class="hy-title">Benign and Malignant Breast Lesions</span>
+      <span class="hy-sub">Match each breast lesion to its typical presentation, hallmark pathology and key association &middot; 9 rows</span>
+      <span class="chips"><span class="chip">Benign Breast Disorders</span><span class="chip">Breast Cancer: Classification and Pathogenesis</span><span class="chip">Breast Cancer: Presentation and Management</span><span class="chip">Breast Cancer Screening: Early Detection to Diagnosis</span></span>
+    </span>
+  </a>
+</main>
+</body>
+</html>
