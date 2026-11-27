@@ -134,12 +134,12 @@ def main():
         html = html.replace("<title>", "<title>High Yield: ", 1)
         html = html.replace("</head>", FONTS + HY_CSS + "</head>", 1)
         icon = G.ICONS[i % len(G.ICONS)]
-        assert f"<h1>{icon} " in html
+        assert "<h1>" in html
         dots = "".join(f'<a href="{x["file"]}" class="{"on" if x is g else ""}" title="{G.esc(x["title"])}"></a>'
                        for x in built)
         ribbon = (f'<div class="hy-ribbon"><span class="hy-tag">&#9733; Highest Yield &middot; {i + 1} of {len(built)}</span>'
                   f'<nav class="hy-dots" aria-label="High-yield games">{dots}</nav></div>\n        <h1>')
-        html = html.replace(f"<h1>{icon} ", ribbon, 1)
+        html = html.replace("<h1>", ribbon, 1)
         with open(os.path.join(ROOT, g["file"]), "w", encoding="utf-8") as f:
             f.write(html)
         print("  Created:", g["file"])
@@ -166,7 +166,7 @@ def main():
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ReproStudy &ndash; Highest Yield Drag &amp; Drops</title>
+<title>Reproductive High Yield Games · Active Transport</title>
 {FONTS}
 <style>
   :root{{--ink:#0d0811;--plum:#2a1630;--gold:#f5c451;--gold2:#d99a1e;--rose:#f472b6;--cream:#fbf5e8;--cream2:#f1e6cc;--tan:#c9b48a;--text:#efe7f3;--muted:#b4a6bd;}}
@@ -200,7 +200,6 @@ def main():
 <body>
 <header>
   <span class="eyebrow">&#9733; Highest Yield</span>
-  <h1>Highest Yield Drag &amp; Drops</h1>
   <p>{len(built)} games that pack the most-tested facts from across the Reproductive Systems course into one review set, built for the last pass before the exam.</p>
   <div class="pills">
     <span class="pill"><b>{len(built)}</b> games</span>
@@ -220,5 +219,16 @@ def main():
           [b for b in range(1, 62) if b not in covered])
 
 
+def _sync_shared_look():
+    """Primary Active Transport shared header/styles (C:/study-tools/_shared/STYLE_SPEC.md)."""
+    import subprocess
+    sync = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "_shared", "sync_static.py")
+    if os.path.exists(sync):
+        subprocess.run([sys.executable, sync, os.path.dirname(os.path.abspath(__file__))], check=True)
+    else:
+        print("WARNING: _shared/sync_static.py not found; pages lack the shared header")
+
+
 if __name__ == "__main__":
     main()
+    _sync_shared_look()
