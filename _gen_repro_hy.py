@@ -154,7 +154,7 @@ def main():
     <span class="hy-num">{i + 1:02d}</span>
     <span class="hy-body">
       <span class="hy-title">{G.esc(g["title"])}</span>
-      <span class="hy-sub">{G.esc(g["subtitle"])} &middot; {g["rows"]} rows</span>
+      <span class="hy-sub">{g["rows"]} rows</span>
       <span class="chips">{chips}</span>
     </span>
   </a>'''
@@ -200,7 +200,6 @@ def main():
 <body>
 <header>
   <span class="eyebrow">&#9733; Highest Yield</span>
-  <p>{len(built)} games that pack the most-tested facts from across the Reproductive Systems course into one review set, built for the last pass before the exam.</p>
   <div class="pills">
     <span class="pill"><b>{len(built)}</b> games</span>
     <span class="pill"><b>{sum(g["rows"] for g in built)}</b> high-yield rows</span>
